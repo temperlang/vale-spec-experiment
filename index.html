@@ -1,0 +1,1487 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Specification for Tempe Vale Library Repository">
+      
+      
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="images/temper-logo-mode-dependent.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Vale Specification</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#tempe-vale" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="." title="Vale Specification" class="md-header__button md-logo" aria-label="Vale Specification" data-md-component="logo">
+      
+  <img src="images/temper-logo-256.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Vale Specification
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Tempe Vale
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/temperlang/value-spec-experiment" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="." title="Vale Specification" class="md-nav__button md-logo" aria-label="Vale Specification" data-md-component="logo">
+      
+  <img src="images/temper-logo-256.png" alt="logo">
+
+    </a>
+    Vale Specification
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/temperlang/value-spec-experiment" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tempe Vale
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="." class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tempe Vale
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#background" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Background
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Entities
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#page-and-caching-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Page and caching architecture
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#url-path-conventions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        URL path conventions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#access-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Access Control
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#domain-objects-types-and-corresponding-delta-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Domain objects types and corresponding Delta types
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#database-interactions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Database interactions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#personally-identifying-information-pii" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Personally Identifying Information (PII)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#markdown-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Markdown processing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#library-documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Library documentation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#schemas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Schemas
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Schemas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#user" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        User
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#displaypreferences" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DisplayPreferences
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#accountinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AccountInfo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#personprofile" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PersonProfile
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#principalprofile" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PrincipalProfile
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#groupprofile" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GroupProfile
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#groupmembership" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GroupMembership
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GroupMembership">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#libraryprofile" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LibraryProfile
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#librarymanagement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LibraryManagement
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#libraryautomation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LibraryAutomation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#versionprofile" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VersionProfile
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testimonial" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Testimonial
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testimonialbundle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TestimonialBundle
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#workflows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Workflows
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Workflows">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#account-creation-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Account creation flow
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#login-and-logout-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Login and Logout flow
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#library-creation-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Library creation flow
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#publication-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Publication flow
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#moderation-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Moderation flow
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#background" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Background
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Entities
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#page-and-caching-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Page and caching architecture
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#url-path-conventions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        URL path conventions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#access-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Access Control
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#domain-objects-types-and-corresponding-delta-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Domain objects types and corresponding Delta types
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#database-interactions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Database interactions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#personally-identifying-information-pii" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Personally Identifying Information (PII)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#markdown-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Markdown processing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#library-documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Library documentation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#schemas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Schemas
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Schemas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#user" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        User
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#displaypreferences" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DisplayPreferences
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#accountinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AccountInfo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#personprofile" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PersonProfile
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#principalprofile" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PrincipalProfile
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#groupprofile" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GroupProfile
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#groupmembership" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GroupMembership
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GroupMembership">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#libraryprofile" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LibraryProfile
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#librarymanagement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LibraryManagement
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#libraryautomation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LibraryAutomation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#versionprofile" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VersionProfile
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testimonial" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Testimonial
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testimonialbundle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TestimonialBundle
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#workflows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Workflows
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Workflows">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#account-creation-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Account creation flow
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#login-and-logout-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Login and Logout flow
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#library-creation-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Library creation flow
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#publication-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Publication flow
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#moderation-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Moderation flow
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="tempe-vale">Tempe Vale<a class="headerlink" href="#tempe-vale" title="Permanent link">&para;</a></h1>
+<h2 id="background">Background<a class="headerlink" href="#background" title="Permanent link">&para;</a></h2>
+<p>Tempe Vale, aka Vale for short, is a database driven web application.</p>
+<p>Its primary purpose is as a module repository for the Temper programming language.</p>
+<p>This document:</p>
+<ul>
+<li>describes the entities that Vale deals with,</li>
+<li>outlines the URL structure</li>
+<li>specifies security and testing requirements and measures like aligning type safety with safety to meet those</li>
+<li>details domain objects</li>
+<li>lists the goals and high-level steps of major workflows</li>
+</ul>
+<p>The intent is to establish ground rules and goals for the system using this document and to iteratively fill in blanks.</p>
+<ol>
+<li>Database schemas and interface/class definitions that can be assembled by generative AI and reviewed by humans.</li>
+<li>The client and server interactions will be designed at a high-level around cached domain objects and merge semantics with a server.</li>
+<li>Those flows will be captured as interaction diagrams and test scenarios generated by AI and reviewed by humans.</li>
+<li>A prose specification for the storage system abstraction will be designed by AI and reviewed by humans with the goal of having as much logic be database agnostic.</li>
+<li>An actual interface type will be generated from that prose specification and a test suite generated by AI and reviewed by humans.</li>
+<li>Once we have can test against storage we can </li>
+</ol>
+<h2 id="entities">Entities<a class="headerlink" href="#entities" title="Permanent link">&para;</a></h2>
+<p>This section defines terms for the kinds of things Vale deals with.</p>
+<p>People can look for, maintain, critique libraries.  They can be members of groups.  Each person has an auto-assigned ID and an email address.  Their profile lists information about them that they may elect to make visible to a particular group.  A person may also have cryptographic public keys associated with their id.</p>
+<p>A user connects to Vale to use the site.  If a user is logged in we know which person they are.  If a user is not logged in we do not assign any person's privileges. </p>
+<p>A group has a group ID, name, and may have other profile info.  Like a person, a group may elect to keep some info public, some visible within the group.  A group has members that are people.  Every person is permanently, implicitly part of a group whose ID is "p-" followed by their name and which only contains that person and whose profile is the same as the person's profile.  Another kind of group, known as named groups, has IDs starting with "g-" followed by an auto-assigned number.  These groups have a list of other groups that are members (though every group is implicitly a member of itself) and the list is editable by people in groups that have the organizer role in the group. Roles are: organizer, member.  Finally there is one group called public.   In the context of a person or group we may say something is private, but by that we mean it's limited to the group or person's p- group.  It is a terms of service violation for a group to mirror the name of a trademarked entity or real person without permission.  A named group's member group list must not contain the public group.</p>
+<p>We can say a user is in a group if the group is the special public group, or the user is logged in and the corresponding person's p- group is a member of the group.</p>
+<p>A library has a name and corresponds to part of a source code project.  It may have zero or more versions identified by server and associated with a location: enough info to fetch a git or other revision control repo and find the file source subtree.  For the latest, stable info, we should be able to extract a short name and README info in zero or more locales following some convention.  Libraries are managed by a particular group, and visible to a group.</p>
+<p>A testimonial is text authored by a person in a locale about a library.  Library managers may choose to allow testimonials on their library page, queue them for review, or disallow.</p>
+<p>This specification intentionally does not allow for negative permissions.  There is no way to define a named group with everyone on some other group, except for Frank.  By avoiding negative permissions, Vale knows that anything that a person never has fewer permissions when logged in than when not-logged-in and restricted to public.  Vale's caching via equivalence to /pub depends on this property.</p>
+<h2 id="page-and-caching-architecture">Page and caching architecture<a class="headerlink" href="#page-and-caching-architecture" title="Permanent link">&para;</a></h2>
+<p>It is very important that the site works well with a content delivery network (CDN), so where the user's view is equivalent to the public view the server should redirect to the cachable /pub version.</p>
+<p>Vale should help illustrate some of the benefits of being able to run the same logic on client and server so, as discussed below, each page render can be boiled down to a load of some initial JSON, turning that into domain objects, then rendering HTML from those client side. Ideally we'd have one main JS file, one CSS, and aggressively cache those. For CSRF protection, we need Javascript creating or submitting forms to have access to a secret which we can't embed in cached content so the JS will need to be able to import a secrets-for-current-session JS module.</p>
+<p>The full set of assets loaded into a page are:</p>
+<ul>
+<li>Bundled, cached JS and CSS.</li>
+<li>A bundle of locale specific strings relevant to the current user's preferred locale.</li>
+<li>On demand, the CSRF token via import operator.</li>
+<li>Images and other media as needed by the site design or embedded in third-party Markdown.</li>
+</ul>
+<h2 id="url-path-conventions">URL path conventions<a class="headerlink" href="#url-path-conventions" title="Permanent link">&para;</a></h2>
+<p>This section outlines which paths serve which purposes.  Inside [...] are substring corresponding to a different convention and which may be percent encoded if those substring allow Url metacharacters.</p>
+<p>For each URL path, and each locale  there is a path that has "/pub/[locale]" prepended but when serving under /pub Vale serves as if the user is not logged in and so has no privileges.  But we still have the locale to localize page content.   Locale is a BCP47 tag.</p>
+<p>For each URL path, there is a path that has "/json" pretended which, when serving a status 200 response has content-type application/json and which serves a structured representation of the data for that page.  If using both "/pub/[locale]" and "/json" the "/json" part comes after.</p>
+<p>/ is the homepage which allows login, searching, and explains Vale and disseminates Vale and Temper news.</p>
+<p>/p/[personid] serves public info about the identified user.  Normally an internal numeric id or an email are interchangeable but if the person profile does not mark their email as public, this url must return the regular 404 page when the email form of person ID is used.  The bulk of the page is the about-me section of their profile.  When viewing their own person page, a logged in user has easy access to their p- group page which allows creating and managing their libraries.</p>
+<p>/p/[personid]/ts lists the person's testimonials and if the identified person is the current user allows editing.</p>
+<p>/l/[libraryname] serves info about a library including name, source location, maintainers, testimonials, and any README.  It also lists available versions and release notes.  It's meant to allow maintainers to publicize their libraries and keep existing users up to date.  If the current user isn't authorized to see the library they must get a standard 404.  Only approved testimonials are shown on the library page.</p>
+<p>/l/[libraryname]/b/[backendid] is for notes for users of that backend's target language related to the library.  It includes the basic library info, but if a library has backend specific docs those are front and center.  When a user searches for libraries, if they've identified that they're searching as a member of a particular language community then search results take them here instead of the /l/[libraryname] page.</p>
+<p>/l/[libraryname]/vs lists available versions of the library and links to each versions details page.</p>
+<p>/l/[libraryname]/v/[semver] has information about a particular version of a library. It also links to where translations of that library are published in downstream module repositories.</p>
+<p>/l/[libraryname]/mod allows a library manager to moderate testimonials about the library.</p>
+<p>/g/[groupid] displays allowed info about the group or a 404 if the identified group's name is not visible to the current user.</p>
+<p>/g/[groupid]/ls lists the libraries the group manages</p>
+<p>/g/[groupid]/edit allows a user whose p- group is in any group with the organizer role to edit the group's membership: removing member groups, adding them, switching between roles.</p>
+<h2 id="access-control">Access Control<a class="headerlink" href="#access-control" title="Permanent link">&para;</a></h2>
+<p>On the server, all database transactions are mediated by a User object so a response handler never gets a view of profile data, for example, that the current user is not authorized to view.  User objects are distinct from person objects, so having access to a Person object does imply the ability for code to assume that person's privileges. </p>
+<p>One goal of access control architecture is to make it easy to test outside of end to end testing.  Testing that something doesn't show up in HTML is error prone because design people need to change HTML structure.  We need our database connections to be abstract enough to allow unit tests to specify the entire contents of a DB used for a unit test.  That way, we can seed a test with some well known substrings that should not leak in a particular testing scenario. </p>
+<p>Testing access control by looking at objects acquired from a stubbed database connection is probably most efficient, but some tests looking for sensitive substrings in rendered HTML after entity, Js, and json escape decoding can give added confidence.</p>
+<p>The Guarded<T> type allows for representing in a domain object a field whose visibility is access controlled.</p>
+<p>Guarded\<T> contains the following:</p>
+<ul>
+<li>an Int64 auto-assigned ID from the storage table that contains it.
+the T value</li>
+<li>a group identifier that gates to whom it is visible.  For a person's profile data, this is typically either public, a named group, or the p- group of the owner.  It's possible to assign visibility to a different p- group, denying it to yourself, but that would be odd.</li>
+</ul>
+<p>When merging a GuardedDelta into a Delta on the server side, the client delta does not get to change the auto-assigned ID.  Negative IDs may be used by clients to create a value that has not yet been synced to the server.  The delta for a guard should allow an optional client id so that the server can send back the authoritative version with a server assigned ID while letting the client know which in the client's store it replaces.</p>
+<p>Auto-assigned IDs may be assigned to a person, group or other entity that might be deleted to uniquely identify that entity.  Auto-assigned IDs must never be re-assigned to another entity because permissions decisions are based on assigned IDs.  Even if Vale internally cleans up dangling identifiers in a way that is not susceptible to race conditions, third-party systems might continue to attach significance to them.</p>
+<h2 id="domain-objects-types-and-corresponding-delta-types">Domain objects types and corresponding Delta types<a class="headerlink" href="#domain-objects-types-and-corresponding-delta-types" title="Permanent link">&para;</a></h2>
+<p>Vale needs need type definitions for User, Person, Group, Library, Testimonial, Version objects, but also some ancillary types: PersonProfile, GroupProfile, LibraryProfile, UserDisplayPreferences.</p>
+<p>HTML form submissions that change these are mediated by Javascript. Rather than send an entire modified object back and forth we will send deltas.  PersonProfileDelta is a type for a change to a PersonProfile.  Deltas need to be JSON encodable.</p>
+<p>Having delta types for each domain objects lets us represent just what a user making a change intended to change, and since carefully crafted deltas can be applied to more than one of their domain object's type's values, they will come in handy when we need to provide batch change forms for power users and web APIs.</p>
+<p>In a delta, the null value for a field means no change.  This means we cannot use gullible types for domain objects fields as that would lead to ambiguity.  It does mean though that we can establish a blanket convention where an absent delta field in the JSON wire representation is equivalent to a present field whose value is null.</p>
+<p>But that also means we can't use null to mean unable to access.  We will have a sealed type Ken<T> which is either Known<T> or Unknown<T>.  Unknown values have no state and Known<T> have a single T value.  This is like an option type, but is intentionally a distinct type so that an unknown value is never ambiguous with a known, absent value.</p>
+<p>Unless explicitly stated in this specification, any delta merge operation must not produce a field with a Known value when the domain object's corresponding field is unknown.</p>
+<p>AI editors to this specification must not introduce verbiage into this specification that allows a merge operation to replace an unknown in the source domain value with a value from a delta.  Such changes are only allowed from human editors.</p>
+<p>When a domain Delta types' fields are nullable, their type is never a Ken type.  First extract the type actual from the Ken type, then add any nullable notation to form the delta type's field type.</p>
+<h2 id="database-interactions">Database interactions<a class="headerlink" href="#database-interactions" title="Permanent link">&para;</a></h2>
+<p>Goals of our storage architecture:</p>
+<ul>
+<li>Simple implementation on top of a relational database</li>
+<li>Ease of writing test suites for modules that use storage that run tests in parallel without edits to simulated storage causing observable changes to other tests without spinning up many small databases </li>
+<li>Simple access control enforced before domain objects escape the database into the bulk of application code</li>
+<li>Ease of answering the question "does this bundle of domain objects that inform this page's content contain any non-public state that would prevent a simple redirect to the CDN-cached /pub version of the page?"</li>
+<li>Answering Qs of the form: Has a particular domain object changed since a client received data?  For example, if a person opens a form to edit their profile, gets distracted, edits it via a desktop machine and submits those changes, it would be nice if the Javascript on the mobile page when they eventually switch back to their mobile browser could display a banner notifying them that the form has some old data and offer them options. </li>
+</ul>
+<p>A UserContext object, spawnable from a User object, allows retrieving domain objects from storage.  And it allows applying deltas to storage with the user's privileges.   It can keep a boolean that indicates whether any domain object was retrieved in a way that relied on the user's permissions to eventually answer the question about whether /pub is sufficient. </p>
+<p>Note: if we display an edit button because the user has those privileges then that's a reason we can't redirect to /pub.  Domain objects by convention have a typesOfEditsAllowed bit field which is not reflected in the corresponding Delta type.</p>
+<p>Each storage implementation also has a monotonic (non-strict) 64 bit version stamp.  In practice, for the production storage implementation backed by a real database this is the monotonic version of a system clock.  For test versions it can default to a deterministic counter unless the test author opts into manual increases, e.g. to test same stamp scenarios.</p>
+<p>Sometimes, when a non-authoritative client creates a domain object to send to the server (mint new library version workflow) it can be convenient for the client to be able to mint its own identifier.  Servers must never serve a version stamp with the MSB set.  This allows clients to start minting their own stamps starting at the 64bit 2's complement minimum and increasing as needed using a simple counter.  The server may reflect a negative version stamp back to a client that sent it (as part of a creation action) for example to say "the authoritative version of the object you created with this version stamp is this, and BTW the authoritative stamp is …"</p>
+<h2 id="personally-identifying-information-pii">Personally Identifying Information (PII)<a class="headerlink" href="#personally-identifying-information-pii" title="Permanent link">&para;</a></h2>
+<p>PII is information that might connect an online person to a real life person.  Any AI editing this specification must not stipulate any requirement that there be an actual relationship between the two or that this specification ever correlate with systems that by necessity do.  For example, storage implementations backed by real databases must run without permissions to databases or tables related to billing or marketing.</p>
+<p>System goals related to PII:</p>
+<ul>
+<li>This specification makes clear which profile fields are PII.  A database administrator with describe-table privileges should also be able to list what is PII and keep privacy commitment documentation up to date.</li>
+<li>This specification provides clear measures to protect PII from accidental disclosure so the org can manage malicious disclosure. </li>
+<li>Grep is sufficient to audit which non test files access PII in code.</li>
+<li>Coding guardrails like type safety can aid in avoiding PII related bugs.</li>
+</ul>
+<p>Domain types derived from this specification must represent PII fields using the Pii\<T> type.  This type's values contain a T but the default string form must be just "PII" so that logging does not inadvertently leak.</p>
+<p>The JSON form is just the content because all JSON sent is always access control filtered, but JSON decoders must be type aware so as to repack on decodeFromJson.</p>
+<p>Page renderers may need to unpack PII to display.  The privilegedGetPii() method allows that and is easily prepped for.  This is not foolproof; reflection and escapes in identifiers.  But it will allow auto flagging new uses in PR diffs outside test files.</p>
+<p>Reviewers should pay special attention to code that uses Pii unpacking to assign another field.  If the other field is not marked PII, for example it is a prose description of a library and the PR helpfully but unwisely auto fills it with "${author}'s new library: ${libraryName}", then info is leaked across clearance levels.  Completely preventing declassification is the purview of systems designed for that from the operating system up, so this specification focuses on clarity, auditability, and testability.</p>
+<p>Fine-grained access control allows people who want to carefully manage their online persona to do so, while allowing those who want to build their offline brand as a public contributor to do so.  Some people may be required by conditions of their employment to have their name visible within an organization but not wish to outside, and basing visibility on groups is meant to allow that balance. </p>
+<p>Another PII protecting measure is to make it easy to render info when PII fields are unavailable.  If displaying a list of group members where the current user is authorized to see that a person is a member but not to see their name, a convenience method like privilegedGetNameOrFallback() can make it easy to substitute "person#[auto-assigned-number]" when the name is access restricted.  Such conveniences should return HtmlRenderable to aid localization of placeholder text.</p>
+<h2 id="markdown-processing">Markdown processing<a class="headerlink" href="#markdown-processing" title="Permanent link">&para;</a></h2>
+<p>Markdown to HTML converters are well understood but are a frequent source of XSS when the Markdown comes from an untrusted source.</p>
+<p>All Markdown from third-party content must be sanitized after the Markdown to HTML conversion, and checked for unbalanced bidi content.</p>
+<p>We define <em>short Markdown</em> as a subset of Markdown that, when converted to HTML, has non-inline elements also stripped.  This allows short Markdown that can display on one line inside a bounded box.  Useful for names and snippets.  HTML rendering of short Markdown fields should render it in such a way that the height is limited to one line in the current font and vertical overflow is hidden.</p>
+<p>(We may experiment with using iframe srcdoc with same-origin disallowed to sequester markdown if there is a desire for interaction.  Since Temper allows JavaScript, some projects may wish to deploy web playgrounds)</p>
+<h2 id="library-documentation">Library documentation<a class="headerlink" href="#library-documentation" title="Permanent link">&para;</a></h2>
+<p>As specified elsewhere, a library is established by the existence of a config.temper.md source file and the directory containing it is the library root.  The library sources comprise that configuration file and any other *.temper and **.temper.md files under the library root which are not part of a nested library.</p>
+<p>Users searching Vale for libraries that would help them need a way to understand what a library does, and how to get started using it.</p>
+<p>Any README*.md files in the library root are assembled and we extract a locale mapping.
+If the file name does not start with "README." or it ends with ".temper.md" it is excluded.</p>
+<p>We then sort the files by name, so that if two files have an equivalent BCP-47 locale but differ by case, which one is used is deterministic.</p>
+<p>If a file has a name of the form "README.[localetag].md" then localetag is parsed as a BCP-47 locale tag.  If it is not a valid tag, the file is excluded.  If it is, we add a mapping from that tag to the file.</p>
+<p>If a file has the name "README.md", and there is no mapping for the "en" locale, we add a mapping to that file for the "en" locale.</p>
+<p>Now we have, for the library version, a mapping from locales to markdown files.</p>
+<p>A library's <em>latest version</em> is the version whose <a href="https://semver.org/">semantic version</a> is greatest and which is not a <a href="https://semver.org/#spec-item-9">pre-release version</a>.</p>
+<p>When serving documentation for a library (URL /l/[libraryname]), if there is a latest version, the latest version's library to documentation map is used.
+If serving documentation for a particular version (URL /l/[libraryname]/v/[semver]), that version's library to documentation map is used.</p>
+<p>When serving documentation for a library, if the library has no latest version or the documentation map is empty, Vale returns a localized "No documentation yet for this library" placeholder.</p>
+<p>If Value has a documentation map, we use the current user's display preference's locale to pick a version based on locale fallback rules, falling back to "en" if available and to the lexicographically least locale if not.</p>
+<p>The documentation snippet for a library or version is obtained first by using the documentation map with the user's display preference's locale as above, but then obtaining the first string available and non-space-only from among the following:</p>
+<ol>
+<li>The og:description from the Markdown file's front-matter</li>
+<li>The description from the front-matter</li>
+<li>The title from the front-matter</li>
+<li>The text of the first level-1 header in the Markdown body</li>
+<li>If a non-empty string is needed because it is not displayed alongside the library name, the library name text.</li>
+<li>Else, an empty string.</li>
+</ol>
+<h2 id="schemas">Schemas<a class="headerlink" href="#schemas" title="Permanent link">&para;</a></h2>
+<p>Above, we've listed types of domain objects.  Each subsection here lists the corresponding fields and Metadata like notional type, optionality, PII, and for strings the content-type to aid in escaping, sanitization.</p>
+<p>This is meant to aid in database table design and query building, defining Temper classes and interfaces both for the domain type, but also for its delta, and the generation of code that, via HTML, displays or enables editing interactions.</p>
+<h3 id="user">User<a class="headerlink" href="#user" title="Permanent link">&para;</a></h3>
+<p>There are two kinds of users, so this warrants a sealed interface with two variants:</p>
+<p>AnyUser represents the state where Vale has no login info, so only public info is available and no editing actions are possible. 
+SomeUser contains a Person in addition to the common fields below.</p>
+<p>Fields</p>
+<ul>
+<li>prefs: DisplayPreferences</li>
+</ul>
+<p>User objects have DisplayPreferences.  For AnyUser values, the DisplayPreferences use a locale inferred from request headers like Accept-Language and/or geo-location.  For SomeUser values, the DisplayPreferences come from storage.</p>
+<p>Vale should restrict the creation of User objects to a small amount of code that extracts and validates session headers from the HTTP request.</p>
+<h3 id="displaypreferences">DisplayPreferences<a class="headerlink" href="#displaypreferences" title="Permanent link">&para;</a></h3>
+<p>Fields</p>
+<ul>
+<li>locale: Locale</li>
+</ul>
+<p>More complicated preferences would break the equivalence between a page for the user that requires no non-public info and the /pub version.</p>
+<h3 id="accountinfo">AccountInfo<a class="headerlink" href="#accountinfo" title="Permanent link">&para;</a></h3>
+<p>A person needs to be able to log in to become the user.  AccountInfo is info about a person that is never displayed to any user other than the user corresponding to that person.</p>
+<p>These fields are not typed as Guarded, because they are only used for login flow, so one person's account info is never sent to the client when the user is not that person.</p>
+<ul>
+<li>id: Int64.  Same as the person auto-assigned id.</li>
+<li>email: Pii\<String>.  This is used during login.</li>
+<li>providerIdentifier: String.  The OAuth provider identifier, e.g. Github.</li>
+<li>subclaim: A provider specific unique identifier per OAuth conventions.</li>
+</ul>
+<p>Vale does not need nor store the name info.  It requests it as part of OAuth during the creation flow to auto-populate the user's name field, but does not store it past that point.</p>
+<p>A person may change to a different provider in which case, all but the id may change.</p>
+<p>Email must never be shared by two account records.  Any changes to an account to use a different email and/or provider must be done in a transaction that guards against duplicate emails for different ids.  Account recovery flows are TBD but probably require this.</p>
+<h3 id="personprofile">PersonProfile<a class="headerlink" href="#personprofile" title="Permanent link">&para;</a></h3>
+<p>People have different goals when interacting with Value.</p>
+<p>Some want to promote their real life persona's public image as a contributor to OSS.
+Some want to keep their public and online personas separate.
+Pragmatically, some want their coworkers to know who they are in the organization.  Perhaps inside example.com the internal employee directory who.example.com/alice is a great introduction, but that's not visible outside, and talking about internal websites is discouraged.  But their public software work is best introduced via their stackoverflow or github account pages.</p>
+<p>In these three scenarios, the first might use the public group permissions a lot.  The second might leave most of their profile blank, or restrict it to a group that they and a few friends maintain.  The third might have multiple bios and social URLs some with company group visibility and some with public visibility.</p>
+<p>Most everything about a PersonProfile is PII.</p>
+<p>The fields for a person profile are defined in PrincipalProfile, next.</p>
+<h3 id="principalprofile">PrincipalProfile<a class="headerlink" href="#principalprofile" title="Permanent link">&para;</a></h3>
+<p>For the purposes of this document, "principal" means that which acts as a subject in important sentences about entities: "This person creates a library", "That group manages the library." Users are not principals because users can view only a logged-in user, corresponding to a person, can effect change.</p>
+<p>Principal profiles collect information about a principal so that users can understand who can do what.  Reputation is important in choosing which software building blocks to use: who has the specialist expertise to build useful abstractions, who is skilled in execution, who maintains what they write. Vale needs to let principals manage their online personae to make a case for why their libraries are worth investigating.</p>
+<p>PrincipalProfile is a sealed interface with shared fields between PersonProfile and GroupProfile.</p>
+<p>This type has a list of some fields that you might expect to see one of just to allow different group associations, but if multiple bios, for example, are visible, display code should just show them in sequence.  If multiple avatars are visible, since avatars are meant to occupy a fixed amount of visual real estate, display code should just show the first.</p>
+<p>Fields</p>
+<ul>
+<li>id: Int64; auto-assigned.  Not changeable via delta.</li>
+<li>name: Guarded\<Pii\\<String>>, text/markdown but short markdown.  Terms of use require no relationship to a real person, but if the name uses a trademarked phrase without permission, that's a ToU violation.</li>
+<li>bio: Pii\<Guarded\\<Pii\<String>>>, text/markdown; People can describe themselves and their goals here.  Groups can describe their purpose here.</li>
+<li>urls: List\<Guarded\\<Pii\<String>>>, URL; to things like Github, stackoverflow, social websites, company directories, personal blogs, etc. </li>
+<li>avatars: List\<Guarded\\<Pii\<String>>>, URL; links to things like gravatar.  Terms of Service require no NSFW avatars.</li>
+<li>favouriteGroups: List\<Guarded\\<GroupId>>, groups the user likes.  If public, can advertise affiliation with a high-reputation group.  If private, just helps auto-populate options like managedBy when creating libraries.  (Visible, favourite groups that the person is not a member of should be distinguished using neutral terminology: "Likes" vs "Affiliations")</li>
+</ul>
+<p>URLs will be limited to http or https or mailto.  (We may expand to tip jar style custom mobile URIs based on user demand but often there are https equivalents.)  There is no terms of service requirement that a mailto appear or that it match the email address on file.</p>
+<h2 id="groupprofile">GroupProfile<a class="headerlink" href="#groupprofile" title="Permanent link">&para;</a></h2>
+<p>A group profile only exists for named groups, "g-" groups.</p>
+<p>PrincipalProfile allows getting at fields for either a person or a group.</p>
+<p>In lieu of a ubiquitous profile object, there is a short Markdown descriptor available for any group.</p>
+<p>For the public group, it is the term "everyone" appropriately localized.
+For an individual, "p-" group, it is the name if visible or otherwise "person#[auto-assigned-number]" with "person" appropriately localized
+For a "g-" group, it is the group name if visible or otherwise "group#[auto-assigned-number]" with "group" appropriately localized</p>
+<p>GroupProfile currently has no fields beyond PrincipalProfile.</p>
+<p>Named groups also have GroupMembership which is a separate domain object.</p>
+<h2 id="groupmembership">GroupMembership<a class="headerlink" href="#groupmembership" title="Permanent link">&para;</a></h2>
+<p>GroupMembership lists which groups are in a named group.</p>
+<p>Semantically, a group has organizers (can edit the group membership and the group profile) and members (cannot).
+Another group is in the group if it is either an organizer or member or it is transitively in any element of organizers or any element of members.</p>
+<p>For shorthand this specification says a person is in a group when that person's corresponding p- group is in the group.</p>
+<p>In the database, it's sufficient to represent groups via a table with three columns (contains, contained, role).  The first two can be keys.  The left column only contains g- group IDs, but the second can contain either g- or p- group IDs.  Role is an enum (organizer, member).</p>
+<p>It is legal for two named groups to contain each other.  To rule otherwise would mean managing race conditions in databases between different group organizers.
+Code must not iterate members of groups without taking measures to avoid cycles.</p>
+<p>Databases can efficiently compute this.  <a href="https://age.apache.org/getstarted/quickstart/">AGE</a> extends Postgres to make transitive closure computation efficient via <a href="https://en.wikipedia.org/wiki/Cypher_(query_language)">cypher</a> queries.</p>
+<p>In the type representation, absent a database, it's convenient to have a bit more structure for a group, to break p- members out since they don't need to be transitively traversed.  This would allow computing group membership on the client if really necessary.</p>
+<p>Fields:
+- gOrganizers: List<Int64>, the auto-assigned ID parts of g- IDs.
+- gMembers: List<Int64>, the auto-assigned ID parts of g- IDs
+- pOrganizers: Set<PersonId>, the auto-assigned ID parts of p- IDs.
+- pMembers: Set<PersonId>, the auto-assigned ID parts of p- IDs</p>
+<p>Here's an algorithm that is not efficient but which memoizes well, and can be used in test code and to check against a cypher implementation for equivalence.
+For checking group membership, memoized, takes two group IDs, container and contained, and a memo-table:</p>
+<ol>
+<li>if the two group IDs are the same, return true</li>
+<li>if the contained is the special group public, return false</li>
+<li>if the container is the special group public, return true</li>
+<li>if the container is a p- ID return false because it only contains itself and failed the check above</li>
+<li>if memoTable[pair(container, contained)] is present, return it</li>
+<li>let containerId: Int64 be the container's auto-assigned id part because it must be a g- group</li>
+<li>let containedId: Int64 be the contained's auto-assigned id part</li>
+<li>let isP: Boolean be true when contained is a p- group.  Otherwise it's a g- group because we eliminated the special group public above.</li>
+<li>set memoTable[pair(container, contained)] = false.  Guarantees halting even in the presence of group membership cycles.</li>
+<li>let result = false</li>
+<li>if isP and containedId is in either pOrganizers or pMembers, set result to true</li>
+<li>else if !isP and containedId is in either gOrganizers or gMembers, set result to true</li>
+<li>else for each element of the union of gOrganizers and gMembers</li>
+<li>recursively check group membership of container and element with the same memo-table</li>
+<li>if it is a member, set result to true and break from the loop</li>
+<li>set memoTable[pair(container, contained)] = result</li>
+<li>return result</li>
+</ol>
+<p>For efficiency and ease of use, UserContext contains a GroupMembership helper object that either uses storage to check or caches group membership operations so that repeated questions about group membership can be efficiently answered.</p>
+<h3 id="libraryprofile">LibraryProfile<a class="headerlink" href="#libraryprofile" title="Permanent link">&para;</a></h3>
+<p>A library profile has information about a library.</p>
+<p>Access to the library as a whole is gated by visibleTo in LibraryManagement.  This allows restricting to an organizations member group (or subgroup within an org) or a group of informal collaborators.</p>
+<p>This information is not marked Pii because a library is not about a person.  A library author might name their library something like "Sam's awesome widget juggling library" but as long as that is an intentional, personal choice to declassify, Vale need not treat library metadata as Pii.</p>
+<p>Fields:</p>
+<ul>
+<li>id: Int64 auto-assigned</li>
+<li>name: String; text/plain, unique</li>
+<li>versions: List\<SemVer></li>
+<li>latestVersionProfile: VersionProfile?</li>
+<li>tags: TagSet</li>
+<li>resources: Resources?, a bundle of URLs with a ResourceClassification: docs, issue tracker, git repo, etc.</li>
+<li>created: DateTime</li>
+</ul>
+<p>The managedBy field should not be part storage's libraryprofile table.  See the …/ls URL above.  That is easier to fetch if there is a dedicated, double-keyed, many:1 libraryManagement table (see below).</p>
+<p>Only if the current user is in the managedBy group are these additional details, from a separate management storage tables, available:</p>
+<p>testimonialModeration: one of Allow, Queue, Forbid; controls which testimonials show up on a library page instead of only on the author's testimonials page</p>
+<p>The latestVersionProfile is not stored in the database with the other fields, nor is it editable.  It is computed, but bundled by the storage layer in the domain object since the latestVersionProfile determines most of the visible content on the library page.</p>
+<p>The latestVersionProfile is null if no non-pre-release version has been published.</p>
+<p>See also (library creation workflow below)</p>
+<h3 id="librarymanagement">LibraryManagement<a class="headerlink" href="#librarymanagement" title="Permanent link">&para;</a></h3>
+<p>This contains info necessary to enable changes to the library but also permissions info.</p>
+<ul>
+<li>id: Int64, auto-assigned id for the library</li>
+<li>managedBy: GroupId, who can change the library</li>
+<li>visibleTo: GroupId, who can see that the library exists, its profile data, and can download artifacts.</li>
+</ul>
+<p>If a group manages a library and the group is deleted, the managedBy group ID may not refer to an existing group.  TBD: orphaned library workflow that encourages OSS contributors to take over abandoned libraries.</p>
+<h3 id="libraryautomation">LibraryAutomation<a class="headerlink" href="#libraryautomation" title="Permanent link">&para;</a></h3>
+<p>This is editable info related to a library that is controlled by the managedBy group.</p>
+<p>It's for secrets that allow authorized third-parties like The ValuePublish action to publish versions without repeated authorization by library managers.</p>
+<p>The Vale UI must never expose the secrets to any user, not even managers.  Managers may store, but not retrieve.  Managers should create a secret, store it securely with the third-party (e.g. a Github action), and store it here.  The action can then use that secret to attest to its authorization to publish a new library version.</p>
+<p>Fields:</p>
+<ul>
+<li>id: Int64, auto-assigned id for the library</li>
+<li>secret: bytes: a cryptographic secret</li>
+<li>description: String, text/plain; allows managers to know what they stored so they can delete keys that are no longer needed</li>
+<li>created: DateTime; when the secret was stored so that managers can perform key rotation according to their needs</li>
+</ul>
+<p>This is a one:many mapping.</p>
+<p>Vale's web UI should not have read access to the database column owning secrets.  A separate publication system is the only one that needs them, and the database could be imlemented using an identifier for the secret which points into a separate storage area.    </p>
+<h3 id="versionprofile">VersionProfile<a class="headerlink" href="#versionprofile" title="Permanent link">&para;</a></h3>
+<p>Vale's unit of publication is a library version, uniquely identified by a pair of (library name, semver tag).</p>
+<p>Access control to a version profile is restricted based on the visibility of the owning library.</p>
+<p>As discussed <a href="#library-documentation">above</a>, published versions provide mappings of locale to documentation essential for connecting library providers and library users.</p>
+<p>Like library fields, version fields are not Pii.  Documentation files might have author names in the front matter and/or in the prose, but see explanation of intentional declassification above.</p>
+<p>Fields:</p>
+<ul>
+<li>version: SemVer</li>
+<li>docs: Map\<Locale, String>, Markdown</li>
+<li>published: DateTime</li>
+</ul>
+<h3 id="testimonial">Testimonial<a class="headerlink" href="#testimonial" title="Permanent link">&para;</a></h3>
+<p>A testimonial represents a person's opinion about a library.</p>
+<p>Library managers get to choose which to show up, so they can elect to only show positive ones.</p>
+<p>Fields:</p>
+<ul>
+<li>id: Int64, auto-assigned</li>
+<li>author: PersonId</li>
+<li>library: LibraryName</li>
+<li>opinion: Markdown</li>
+<li>authored: DateTime</li>
+<li>visibleTo: GroupId</li>
+</ul>
+<p>There is intentionally no star-rating.  Vale will not attempt to aggregate what should be thoughtful and nuanced critiques into a star rating.</p>
+<p>A person can choose to make their testimonials visible only within an org:
+"This library is fine, but we at example.com have invested effort in deep integrations with XYZ so please use that instead."
+That's enabled by visibleTo.</p>
+<p>If none of a library's management group have access to a testimonial, then it will not show up in their mod queue.  </p>
+<h3 id="testimonialbundle">TestimonialBundle<a class="headerlink" href="#testimonialbundle" title="Permanent link">&para;</a></h3>
+<p>A testimonial bundle is just a group of testimonials.  Bundles supports paging.</p>
+<p>Fields:
+- testimonials: List\<Testimonial>
+- page: Int32, for paging, zero-index
+- pages: Int32, count of pages.  May be zero if testimonials is empty</p>
+<p>A testimonial bundle can be all testimonials related to a library, or from an author.</p>
+<h2 id="workflows">Workflows<a class="headerlink" href="#workflows" title="Permanent link">&para;</a></h2>
+<p>Workflows are sequences of actions that together aim towards a goal.</p>
+<p>We list each workflow, mention the URLs and entities involved.</p>
+<p>Most of the access control notes above are devoted to read access.
+Here we try to make explicit what is writable under what conditions.</p>
+<p>The only workflows available to non-logged in users are, unsurprisingly, account creation and login.</p>
+<h3 id="account-creation-flow">Account creation flow<a class="headerlink" href="#account-creation-flow" title="Permanent link">&para;</a></h3>
+<p>Vale does not wish to store passwords.
+It will store automation tokens on behalf of users to allow single button multi-publication.</p>
+<p>Not storing passwords for many users lets us focus more on really locking down the latter.</p>
+<p>To that end, all login is via OAuth federated IDs.  It is a goal of Vale to only require access to the email address as a unique identifier.  There must not be two people with the same email on file, but a person may change their federation settings and the email as long as doing so does not introduce an email uniqueness conflict with another person.</p>
+<p>The goal of this flow are to:</p>
+<ol>
+<li>create a valid AccountInfo record in storage by requesting attestation from OAuth</li>
+<li>create a PersonProfile populated with the user's name, but initially visible only to the newly created person</li>
+<li>flow into the login flow, replacing session cookies with ones that identify the current user as corresponding to the newly created Person</li>
+<li>provide options to quick import profile info from sources like Stackoverflow, Github, Gitlab, vcards.</li>
+<li>redirect to the profile edit page so the person can fill in their profile before optionally making it visible to someone other than themselves.  The UI should provide prominent warnings and reminders that everything is private at this stage.  The UI should require opt-in to leaving the initial profile page while their name is private though that is a valid choice.</li>
+</ol>
+<h3 id="login-and-logout-flow">Login and Logout flow<a class="headerlink" href="#login-and-logout-flow" title="Permanent link">&para;</a></h3>
+<p>The login flow:</p>
+<ol>
+<li>ensures that an HTTP session identifier is available</li>
+<li>invokes OAuth to resolve a claim</li>
+<li>if unsuccessful, presents the option to create an account or retry (TBD relationship to account recovery flow)</li>
+<li>else if successful, replaces session identifiers to point to the logged in user</li>
+<li>if the user logged in so as to see a URL that they could not access as public, redirect to that page</li>
+</ol>
+<p>The logout flow:</p>
+<ol>
+<li>erases any info associating the session ID with a person</li>
+<li>redirects to / to re-infer a preferred locale from non-person associated info and leave the user at the home page where they can elect to log-in again, perhaps as a different person, or browse public info.</li>
+</ol>
+<p>Neither flow involves Vale access control.  Login requires access control mediated entirely by the OAuth provider.  The OAuth claim is sufficient to authorize creation of a User object based on a matching AccountInfo record.</p>
+<h3 id="library-creation-flow">Library creation flow<a class="headerlink" href="#library-creation-flow" title="Permanent link">&para;</a></h3>
+<p>User must be logged in.</p>
+<p>The flow faciliates the following steps:</p>
+<ol>
+<li>Choose a name.  Name must not conflict with existing names.</li>
+<li>Create a LibraryProfile record where managedBy and visibleTo are initially the p- group associated with the current user's person.</li>
+<li>Proceed to the profile edit page in a way that encourages checking managedBy and visibleTo.  Drop downs should make it easy to pick favourite groups for these.</li>
+<li>Profile edit page should encourage auto-importing URLs from a Git hosting site or equivalent.</li>
+<li>Whether the profile is edited, or the user navigates away without editing, pop-up to encourage going to the versions list page for the library which, presuming it's empty will have instructions on how to publish, and which should encourage using the ValePublish action for their source hosting provider.</li>
+</ol>
+<h3 id="publication-flow">Publication flow<a class="headerlink" href="#publication-flow" title="Permanent link">&para;</a></h3>
+<p>User must be logged in and in both the managedBy and visibleTo group for the library.</p>
+<p>If the user is not in the visibleTo group, they are not authorized to view the version list, so picking a non-conflicting semver version identifier would be leaking information about the library.
+If they are in managedBy they can change visibleTo to something that includes them, but that is a required step to avoid leakage or blurring the meaning of the two different access controls.</p>
+<p>Normally, publication should be initiated by the ValePublish action (see above).  For Github, a Github action by that name handles the </p>
+<p>Manual publication via the Vale web UI involves several steps:</p>
+<ol>
+<li>Identify the library</li>
+<li>Check that the current user is authorized</li>
+<li>Pick a semver tag and checking that it does not conflict with an existing version of the library</li>
+<li>Pick a source for the version.  Possible options include:<ol>
+<li>A Git repo that is cloneable</li>
+<li>A TAR ball</li>
+</ol>
+</li>
+<li>Retrieve a file tre from the source</li>
+<li>Check that it contains a <code>config.temper.md</code> for the named library and a temper.out and temper.keep directories corresponding to the library with desired translations</li>
+<li>Forward source metadata, the bundle, and the desired library name and version pair to the publication system.</li>
+<li>Display a waiting page until notification of success or failure is received.</li>
+<li>On failure, point to help docs.</li>
+<li>On success, transition to the /l/[libraryname]/v/[semver] page.</li>
+</ol>
+<h3 id="moderation-flow">Moderation flow<a class="headerlink" href="#moderation-flow" title="Permanent link">&para;</a></h3>
+<p>An authorized library manager may enter the moderation flow.</p>
+<p>If the moderation options are not to queue, the page displays that fact and links to library profile editing to enable changing that.</p>
+<p>They are presented with three tabs: Queue, Accepted, Rejected.  Initially the Queue is selected.</p>
+<p>The Queue tab includes <kbd>Accept All</kbd> and <kbd>Reject All</kbd> buttons.</p>
+<p>Regardless of which tab is chosen, there is a vertical listing of the current page of the testimonial bundle for testimonials of the library whose status is the status the tab displays.</p>
+<p>Next to each testimonial are radio buttons.
+For the queue tab the radio buttons are: no action, accept, reject.
+For the accepted tab, the radio buttons are: no action, reject, back to queue.
+For the rejected tab, the radio buttons are: no action, accept, back to queue.
+All radio button text must be properly localized.  The underlying values are the empty string for no-action, or the programmatic identifier for the corresponding testimonial status.</p>
+<p>At the top and bottom are apply buttons.  If a radio button was changed from "no action" but not applied, navigation away alerts to that fact.</p>
+<p>Apply changes the status of the relevant buttons in the database via the server, and refreshes so that the current page contains only the ones for the relevant tab.</p>
+<p>Paging through testimonials in the testimonial bundle is accomplished by standard next/prev buttons.</p>
+<p>There should be a convenient link to view the library page, so the moderator can see it with testimonials.</p>
+<p>Messages from the browser to the server include a delta to the testimonial bundle, but the client should keep a cache of statuses and the server should respond with a delta for any it changed that the client incorporates into the cache.  The cache can be filled with extra page's content as requested.  When switching tabs, the client just needs to check that it has a page with that status, requesting as necessary and rerender.  No need to load a different browser page when tabbing, paging, or applying.</p>
+<p>On a library page, testimonial authors should always see their testimonials, but if the are queued or rejected, that decision should be made clear.</p>
+<p>Rejected or Queued testimonials by other authors should never by visible on a library page, but if the current user is a manager of a library, on its library page they should see a discrete note when the queue is not empty.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["content.code.copy", "navigation.footer"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
