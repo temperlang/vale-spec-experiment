@@ -1,7 +1,7 @@
 site_name: Vale Specification
 site_description: Specification for Tempe Vale Library Repository
 
-repo_url: https://github.com/temperlang/value-spec-experiment
+repo_url: https://github.com/temperlang/vale-spec-experiment
 repo_name: GitHub
 
 markdown_extensions:

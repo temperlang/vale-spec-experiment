@@ -4,6 +4,8 @@ Vale Specification Experiment
 This repository has a specification for Tempe Value.
 Details in vale-spec/docs/index.md.
 
+Latest: https://temperlang.github.io/vale-spec-experiment/
+
 This is an experiment in specification writing that includes position
 paper elements on architecture instead of just describing what
 implementors need to know to implement the spec.
