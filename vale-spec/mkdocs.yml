@@ -1,0 +1,68 @@
+site_name: Vale Specification
+site_description: Specification for Tempe Vale Library Repository
+
+repo_url: https://github.com/temperlang/value-spec-experiment
+repo_name: GitHub
+
+markdown_extensions:
+  # https://python-markdown.github.io/extensions/admonition/
+  - admonition
+  # https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/#attribute-lists
+  # Allows attributes on links including image links
+  - attr_list
+  # https://squidfunk.github.io/mkdocs-material/reference/footnotes/
+  - footnotes
+  # https://python-markdown.github.io/extensions/md_in_html/
+  - md_in_html
+  # https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#inlinehilite
+  - pymdownx.inlinehilite
+  # https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#smartsymbols
+  - pymdownx.smartsymbols
+  # https://squidfunk.github.io/mkdocs-material/reference/icons-emojis/
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+      options:
+        # https://squidfunk.github.io/mkdocs-material/setup/changing-the-logo-and-icons/#additional-icons
+        custom_icons:
+          - overrides/.icons
+  # https://squidfunk.github.io/mkdocs-material/reference/code-blocks/
+  - pymdownx.highlight:
+  # https://squidfunk.github.io/mkdocs-material/upgrade/#pymdownxsuperfences
+  - pymdownx.superfences:
+      custom_fences:
+        # https://squidfunk.github.io/mkdocs-material/reference/diagrams/#configuration
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  # https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#tabbed
+  # tabbed lets us put code blocks translated from Temper code
+  # together.
+  # squidfunk.github.io/mkdocs-material/reference/content-tabs/#grouping-code-blocks
+  - pymdownx.tabbed:
+      alternate_style: true
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
+  # https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/#+toc.permalink
+  - toc:
+      permalink: true
+  - pymdownx.snippets
+  # https://facelessuser.github.io/pymdown-extensions/extensions/keys/
+  - pymdownx.keys
+  # Allow custom meta tags via theme overrides per
+  # https://squidfunk.github.io/mkdocs-material/reference/#using-metadata-in-templates
+  - meta
+
+plugins:
+  - search
+
+theme:
+  name: material
+  favicon: images/temper-logo-mode-dependent.svg
+  features:
+    - content.code.copy
+    - navigation.footer
+  logo: images/temper-logo-256.png
+  palette:
+    primary: custom
