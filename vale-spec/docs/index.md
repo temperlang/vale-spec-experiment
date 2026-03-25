@@ -34,12 +34,13 @@ Some sections of the spec are known to be very vague.  We will need to:
 1. Flesh out federated auth: providers, vendors pros/cons, who is a domain expert who can identify common pitfalls in OAuth
 1. Flesh out publish action requirements, what can be shared across hosting providers, and what's specific.  Do other people have actions for different providers?  Their experiences?
 
-## Notation conventions
+## Notational conventions
 
-- *person*, *people*, and *Delta type* are defined spec terms and are written in italics in this document.
-- Type names and method names in this spec are written as inline code, e.g. `PersonDelta`, `Guarded<T>`, `privilegedGetPii()`, `Int64`, `Int32`, `String`, `Boolean`, `Locale`, `Url`.
-- URL path templates are written as inline code with literal brackets, e.g. `/l/[libraryname]`, `/p/[personid]`.
-- Inside code spans, angle brackets use literal `<` and `>` (not HTML entities), e.g. `Guarded<T>`, `Pii<T>`.
+In italics are terms defined in this spec, e.g. *person*, *people*, and *Delta type*.
+
+Programming language identifiers including type and method names are in a code font, e.g. `Guarded<T>`, `privilegedGetPii()`.
+
+URL path templates are in a code font too, e.g. `/l/[libraryname]`, `/p/[personid]`.  Any URL path part inside square brackets, e.g. `[libraryname]` is a placeholder for some text that, in this case is a valid library name, possibly `%` encoded.
 
 ## Entities
 
