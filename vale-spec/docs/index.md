@@ -589,3 +589,89 @@ Messages from the browser to the server include a delta to the testimonial bundl
 On a library page, testimonial authors should always see their testimonials, but if the are queued or rejected, that decision should be made clear.
 
 Rejected or Queued testimonials by other authors should never by visible on a library page, but if the current user is a manager of a library, on its library page they should see a discrete note when the queue is not empty.
+
+## Dedicated documentation hosting
+
+The [library documentation](#library-documentation) section above describes how documentation is extracted from library sources and mapped to locales.  This section proposes a dedicated documentation hosting service, separate from the main Vale application, to serve rendered documentation at scale.
+
+### Why a separate service
+
+Mature package repositories like hex.pm learned that documentation hosting has fundamentally different operational characteristics than the registry itself.  Documentation is read-heavy, rarely changes (only on publication), and benefits enormously from CDN caching.  The main Vale application handles authenticated writes, access control decisions, and interactive workflows like moderation.  Mixing high-volume static doc serving into that application increases its resource footprint and complicates its caching story.
+
+A dedicated docs service also allows independent scaling.  Documentation traffic often dwarfs registry traffic by an order of magnitude, especially when search engines index library docs.  Keeping that traffic off the main application means the main application's performance is not affected by a library's documentation going viral.
+
+### Architecture
+
+The documentation service runs at a separate subdomain, for example docs.vale.example.  It is a distinct application with its own deployment, but it shares access to the storage layer for authentication verification.
+
+#### Publication pipeline
+
+When a library version is published via the publication flow, the publication system performs the following additional steps:
+
+1. Extract the locale-mapped documentation from the library sources as specified in [library documentation](#library-documentation).
+2. If the library sources contain .temper and .temper.md files, extract type signatures, doc comments, and module structure into a structured documentation bundle.  This structured data supports search indexing, cross-library type linking, and backend-specific rendering.
+3. Render the documentation to HTML.  For Temper source documentation, render per-backend views showing type signatures and idioms appropriate to each target language (JavaScript, Java, Python, etc.).
+4. Package the rendered HTML, structured data, and any referenced images into a documentation archive.
+5. Store the archive in object storage (e.g. S3 or GCS) keyed by library name and version.
+6. Notify the documentation service that new content is available.  This can be accomplished via a message queue so that the publication system does not block on documentation processing.
+
+The documentation service processes the notification, extracts the archive, and makes the content available for serving.
+
+#### URL structure
+
+Documentation URLs follow this pattern:
+
+- docs.vale.example/[libraryname] serves documentation for the latest non-pre-release version, determined the same way as [latestVersionProfile](#libraryprofile).
+- docs.vale.example/[libraryname]/[semver] serves documentation for a specific version.
+- docs.vale.example/[libraryname]/[semver]/[path] serves a specific page within the documentation for that version.
+
+Each documentation page includes a version switcher allowing navigation between versions.
+
+If the library has backend-specific documentation:
+
+- docs.vale.example/[libraryname]/[semver]/b/[backendid] serves backend-specific documentation, showing type signatures and examples in the idioms of that backend's target language.
+
+The main Vale application's library page at /l/[libraryname] should link prominently to the documentation service.  The version detail page at /l/[libraryname]/v/[semver] should likewise link to the corresponding versioned documentation.
+
+#### Locale handling
+
+The documentation service respects the same locale conventions as the main application.  The locale is determined from the request (Accept-Language headers for unauthenticated users, display preferences for authenticated users) and used to select from the locale-mapped documentation as described in [library documentation](#library-documentation).
+
+The URL may optionally include a locale override: docs.vale.example/[locale]/[libraryname]/[semver].  This allows direct linking to documentation in a specific language.
+
+#### Caching and CDN
+
+For libraries whose visibleTo group is the public group, documentation is entirely cacheable.  The documentation service should serve public documentation from a CDN and set long-lived cache headers.  Since documentation only changes on publication, cache invalidation is straightforward: invalidate when a new version is published.
+
+For libraries with restricted visibility, documentation requests must be authenticated.  The documentation service verifies access by checking whether the requesting user is in the library's visibleTo group.
+
+Authentication for the documentation service works as follows:
+
+1. An unauthenticated request to documentation for a non-public library redirects to the main Vale application's login flow with a return URL pointing back to the documentation service.
+2. Upon successful authentication, the main Vale application creates a short-lived, scoped token and redirects back to the documentation service with the token.
+3. The documentation service verifies the token against the main Vale application, establishes a session (stored in an encrypted cookie scoped to the docs subdomain), and serves the documentation.
+4. Subsequent requests within the session are verified locally from the cookie without round-tripping to the main application.
+
+The short-lived token must be single-use and expire within a brief window (e.g. 60 seconds) to prevent replay.  The session cookie must have the Secure, HttpOnly, and SameSite=Lax attributes.
+
+This is more complex than having documentation be a route within the main application, where access control would be handled by the existing UserContext.  The tradeoff is that the documentation service can serve public documentation entirely from CDN without touching the main application, and can scale independently.
+
+#### Search
+
+The documentation service provides full-text search across all documentation visible to the current user.
+
+Search must be locale-aware: a query in Japanese should match Japanese documentation.  The structured documentation data extracted during the publication pipeline enables richer search than raw text matching.  Search results can include type signatures, function names, and module paths in addition to prose matches.
+
+For public documentation, search indices can be pre-built and served from CDN.  For private documentation, search must respect visibility.  A practical approach is to maintain separate search indices per visibility group and merge results at query time based on the user's group memberships.
+
+Cross-library search (searching across all libraries simultaneously) is a valuable feature for discoverability.  A user looking for a function that parses dates should be able to find it across all libraries they can see, not just within one library at a time.
+
+#### Temper-specific documentation features
+
+Because Temper compiles to multiple backend target languages, the documentation service has an opportunity that no other package registry's documentation system has: showing the same library's API in the idioms and type signatures of each target language.
+
+A Java developer evaluating a Temper library should see Java types and calling conventions.  A Python developer should see Python types.  This per-backend rendering is generated during the publication pipeline from the structured documentation data extracted from Temper sources.
+
+Temper's .temper.md format, which mixes prose and executable code, is well suited for literate documentation.  The documentation service should render .temper.md files as documentation where the prose is the narrative and the code blocks are extracted, syntax-highlighted, and optionally linked to the corresponding compiled output for each backend.
+
+Since Temper targets JavaScript, the documentation service may optionally support interactive examples.  A sandboxed iframe (using srcdoc with cross-origin isolation) could compile and run Temper examples in the browser.  This is speculative and should be gated on a security review of the sandboxing approach, but the potential for interactive documentation is a significant differentiator.
