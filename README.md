@@ -40,3 +40,15 @@ From the directory containing this README:
 ```sh
 poetry run bash -c "cd vale-spec && mkdocs serve"
 ```
+
+
+## Decidious Synchronization
+
+When pulling the repo and a new `deciduous.db` exists:
+
+```
+cp .deciduous/decidious.db .deciduous/deciduous_mine.db
+git checkout origin/their-branch .deciduous/deciduous.db
+claude
+"Run through the two deciduous databases in .deciduous and merge them, especially considering trees that touch the same work"
+```
