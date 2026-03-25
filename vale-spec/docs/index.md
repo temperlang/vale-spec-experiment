@@ -34,11 +34,18 @@ Some sections of the spec are known to be very vague.  We will need to:
 1. Flesh out federated auth: providers, vendors pros/cons, who is a domain expert who can identify common pitfalls in OAuth
 1. Flesh out publish action requirements, what can be shared across hosting providers, and what's specific.  Do other people have actions for different providers?  Their experiences?
 
+## Notation conventions
+
+- *person*, *people*, and *Delta type* are defined spec terms and are written in italics in this document.
+- Type names and method names in this spec are written as inline code, e.g. `PersonDelta`, `Guarded<T>`, `privilegedGetPii()`, `Int64`, `Int32`, `String`, `Boolean`, `Locale`, `Url`.
+- URL path templates are written as inline code with literal brackets, e.g. `/l/[libraryname]`, `/p/[personid]`.
+- Inside code spans, angle brackets use literal `<` and `>` (not HTML entities), e.g. `Guarded<T>`, `Pii<T>`.
+
 ## Entities
 
 This section defines terms for the kinds of things Vale deals with.
 
-People can look for, maintain, critique libraries.  They can be members of groups.  Each person has an auto-assigned ID and an email address.  Their profile lists information about them that they may elect to make visible to a particular group.  A person may also have cryptographic public keys associated with their id.
+*People* can look for, maintain, critique libraries.  They can be members of groups.  Each *person* has an auto-assigned ID and an email address.  Their profile lists information about them that they may elect to make visible to a particular group.  A *person* may also have cryptographic public keys associated with their id.
 
 
 A user connects to Vale to use the site.  If a user is logged in we know which person they are.  If a user is not logged in we do not assign any person's privileges.
@@ -68,34 +75,34 @@ The full set of assets loaded into a page are:
 
 ## URL path conventions
 
-This section outlines which paths serve which purposes.  Inside \[...] are substring corresponding to a different convention and which may be percent encoded if those substring allow Url metacharacters.
+This section outlines which paths serve which purposes.  Inside `[...]` are placeholders indicating an arbitrary path element of that semantic category (e.g. `libraryname`, `personid`) and may include characters that require percent encoding for URL metacharacters.
 
-For each URL path, and each locale  there is a path that has "/pub/\[locale]" prepended but when serving under /pub Vale serves as if the user is not logged in and so has no privileges.  But we still have the locale to localize page content.   Locale is a BCP47 tag.
+For each URL path, and each locale there is a path that has `` `/pub/[locale]` `` prepended (or `/pub` alone when locale is not present). This is a platform URL convention rather than a separate content domain; the `/pub` prefix indicates public view semantics with no authenticated privileges.  Locale is a BCP47 tag.
 
-For each URL path, there is a path that has "/json" pretended which, when serving a status 200 response has content-type application/json and which serves a structured representation of the data for that page.  If using both "/pub/\[locale]" and "/json" the "/json" part comes after.
+For each URL path, there is a path that has `/json` appended which, when serving a status 200 response has content-type application/json and which serves a structured representation of the data for that page.  If using both `/pub/[locale]` and `/json` the `/json` part comes after.
 
 / is the homepage which allows login, searching, and explains Vale and disseminates Vale and Temper news.
 
-/p/\[personid] serves public info about the identified user.  Normally an internal numeric id or an email are interchangeable but if the person profile does not mark their email as public, this url must return the regular 404 page when the email form of person ID is used.  The bulk of the page is the about-me section of their profile.  When viewing their own person page, a logged in user has easy access to their p- group page which allows creating and managing their libraries.
+`/p/[personid]` serves public info about the identified user.  Normally an internal numeric id or an email are interchangeable but if the person profile does not mark their email as public, this URL must return the regular 404 page when the email form of person ID is used.  The bulk of the page is the about-me section of their profile.  When viewing their own person page, a logged in user has easy access to their p- group page which allows creating and managing their libraries.
 
-/p/\[personid]/ts lists the person's testimonials and if the identified person is the current user allows editing.
+`/p/[personid]/ts` lists the person's testimonials and if the identified person is the current user allows editing.
 
-/l/\[libraryname] serves info about a library including name, source location, maintainers, testimonials, and any README.  It also lists available versions and release notes.  It's meant to allow maintainers to publicize their libraries and keep existing users up to date.  If the current user isn't authorized to see the library they must get a standard 404.  Only approved testimonials are shown on the library page.
+`/l/[libraryname]` serves info about a library including name, source location, maintainers, testimonials, and any README.  It also lists available versions and release notes.  It's meant to allow maintainers to publicize their libraries and keep existing users up to date.  If the current user isn't authorized to see the library they must get a standard 404.  Only approved testimonials are shown on the library page.
 
-/l/\[libraryname]/b/\[backendid] is for notes for users of that backend's target language related to the library.  It includes the basic library info, but if a library has backend specific docs those are front and center.  When a user searches for libraries, if they've identified that they're searching as a member of a particular language community then search results take them here instead of the /l/\[libraryname] page.
+`/l/[libraryname]/b/[backendid]` is for notes for users of that backend's target language related to the library.  It includes the basic library info, but if a library has backend specific docs those are front and center.  When a user searches for libraries, if they've identified that they're searching as a member of a particular language community then search results take them here instead of the `/l/[libraryname]` page.
 
-/l/\[libraryname]/vs lists available versions of the library and links to each versions details page.
+`/l/[libraryname]/vs` lists available versions of the library and links to each versions details page.
 
-/l/\[libraryname]/v/\[semver] has information about a particular version of a library. It also links to where translations of that library are published in downstream module repositories.
+`/l/[libraryname]/v/[semver]` has information about a particular version of a library. It also links to where translations of that library are published in downstream module repositories.
 
-/l/\[libraryname]/mod allows a library manager to moderate testimonials about the library.
+`/l/[libraryname]/mod` allows a library manager to moderate testimonials about the library.
 
 
-/g/\[groupid] displays allowed info about the group or a 404 if the identified group's name is not visible to the current user.
+`/g/[groupid]` displays allowed info about the group or a 404 if the identified group's name is not visible to the current user.
 
-/g/\[groupid]/ls lists the libraries the group manages
+`/g/[groupid]/ls` lists the libraries the group manages
 
-/g/\[groupid]/edit allows a user whose p- group is in any group with the organizer role to edit the group's membership: removing member groups, adding them, switching between roles.
+`/g/[groupid]/edit` allows a user whose p- group is in any group with the organizer role to edit the group's membership: removing member groups, adding them, switching between roles.
 
 ## Access Control
 
@@ -105,9 +112,9 @@ One goal of access control architecture is to make it easy to test outside of en
 
 Testing access control by looking at objects acquired from a stubbed database connection is probably most efficient, but some tests looking for sensitive substrings in rendered HTML after entity, Js, and json escape decoding can give added confidence.
 
-The Guarded&lt;T&gt; type allows for representing in a domain object a field whose visibility is access controlled.
+The `Guarded<T>` type allows for representing in a domain object a field whose visibility is access controlled.
 
-Guarded&lt;T&gt; contains the following:
+`Guarded<T>` contains the following:
 
 - an Int64 auto-assigned ID from the storage table that contains it.
 the T value
@@ -119,15 +126,17 @@ Auto-assigned IDs may be assigned to a person, group or other entity that might 
 
 ## Domain objects types and corresponding Delta types
 
-Vale needs need type definitions for User, Person, Group, Library, Testimonial, Version objects, but also some ancillary types: PersonProfile, GroupProfile, LibraryProfile, UserDisplayPreferences.
+Vale needs need type definitions for `User`, `Person`, `Group`, `Library`, `Testimonial`, `Version` objects, but also some ancillary types: `PersonProfile`, `GroupProfile`, `LibraryProfile`, `UserDisplayPreferences`.
 
-HTML form submissions that change these are mediated by Javascript. Rather than send an entire modified object back and forth we will send deltas.  PersonProfileDelta is a type for a change to a PersonProfile.  Deltas need to be JSON encodable.
+Types whose names end with `Delta`, such as `PersonDelta`, are delta types corresponding to the same base type; `Delta type` is a defined term.
+
+HTML form submissions that change these are mediated by `JavaScript`. Rather than send an entire modified object back and forth we will send deltas.  `PersonProfileDelta` is a type for a change to a `PersonProfile`.  Deltas need to be JSON encodable.
 
 Having delta types for each domain objects lets us represent just what a user making a change intended to change, and since carefully crafted deltas can be applied to more than one of their domain object's type's values, they will come in handy when we need to provide batch change forms for power users and web APIs.
 
-In a delta, the null value for a field means no change.  This means we cannot use gullible types for domain objects fields as that would lead to ambiguity.  It does mean though that we can establish a blanket convention where an absent delta field in the JSON wire representation is equivalent to a present field whose value is null.
+In a delta, the null value for a field means no change.  This means we cannot use gullible types for domain objects fields as that would lead to ambiguity.  It does mean though that we can establish a blanket convention where an absent *Delta type* field in the JSON wire representation is equivalent to a present field whose value is null.
 
-But that also means we can't use null to mean unable to access.  We will have a sealed type Ken&lt;T&gt; which is either Known&lt;T&gt; or Unknown&lt;T&gt;.  Unknown values have no state and Known&lt;T&gt; have a single T value.  This is like an option type, but is intentionally a distinct type so that an unknown value is never ambiguous with a known, absent value.
+But that also means we can't use null to mean unable to access.  We will have a sealed type `Ken<T>` which is either `Known<T>` or `Unknown<T>`.  Unknown values have no state and `Known<T>` have a single T value.  This is like an option type, but is intentionally a distinct type so that an unknown value is never ambiguous with a known, absent value.
 
 Unless explicitly stated in this specification, any delta merge operation must not produce a field with a Known value when the domain object's corresponding field is unknown.
 
@@ -164,7 +173,7 @@ System goals related to PII:
 - Grep is sufficient to audit which non test files access PII in code.
 - Coding guardrails like type safety can aid in avoiding PII related bugs.
 
-Domain types derived from this specification must represent PII fields using the Pii&lt;T&gt; type.  This type's values contain a T but the default string form must be just "PII" so that logging does not inadvertently leak.
+Domain types derived from this specification must represent PII fields using the `Pii<T>` type.  This type's values contain a T but the default string form must be just "PII" so that logging does not inadvertently leak.
 
 The JSON form is just the content because all JSON sent is always access control filtered, but JSON decoders must be type aware so as to repack on decodeFromJson.
 
@@ -174,7 +183,7 @@ Reviewers should pay special attention to code that uses Pii unpacking to assign
 
 Fine-grained access control allows people who want to carefully manage their online persona to do so, while allowing those who want to build their offline brand as a public contributor to do so.  Some people may be required by conditions of their employment to have their name visible within an organization but not wish to outside, and basing visibility on groups is meant to allow that balance.
 
-Another PII protecting measure is to make it easy to render info when PII fields are unavailable.  If displaying a list of group members where the current user is authorized to see that a person is a member but not to see their name, a convenience method like privilegedGetNameOrFallback() can make it easy to substitute "person#[auto-assigned-number]" when the name is access restricted.  Such conveniences should return HtmlRenderable to aid localization of placeholder text.
+Another PII protecting measure is to make it easy to render info when PII fields are unavailable.  If displaying a list of group members where the current user is authorized to see that a person is a member but not to see their name, a convenience method like `privilegedGetNameOrFallback()` can make it easy to substitute `person#[auto-assigned-number]` when the name is access restricted.  Such conveniences should return `HtmlRenderable` to aid localization of placeholder text.
 
 ## Markdown processing
 
@@ -260,9 +269,9 @@ A person needs to be able to log in to become the user.  AccountInfo is info abo
 These fields are not typed as Guarded, because they are only used for login flow, so one person's account info is never sent to the client when the user is not that person.
 
 
-- id: Int64.  Same as the person auto-assigned id.
-- email: Pii&lt;String&gt;.  This is used during login.
-- providerIdentifier: String.  The OAuth provider identifier, e.g. Github.
+- id: `Int64`.  Same as the person auto-assigned id.
+- email: `Pii<String>`.  This is used during login.
+- providerIdentifier: `String`.  The OAuth provider identifier, e.g. Github.
 - subclaim: A provider specific unique identifier per OAuth conventions.
 
 Vale does not need nor store the name info.  It requests it as part of OAuth during the creation flow to auto-populate the user's name field, but does not store it past that point.
@@ -299,12 +308,12 @@ This type has a list of some fields that you might expect to see one of just to 
 
 Fields
 
-- id: Int64; auto-assigned.  Not changeable via delta.
-- name: Guarded&lt;Pii&lt;String&gt;&gt;, text/markdown but short markdown.  Terms of use require no relationship to a real person, but if the name uses a trademarked phrase without permission, that's a ToU violation.
-- bio: Pii&lt;Guarded&lt;Pii&lt;String&gt;&gt;&gt;, text/markdown; People can describe themselves and their goals here.  Groups can describe their purpose here.
-- urls: List&lt;Guarded&lt;Pii&lt;String&gt;&gt;&gt;, URL; to things like Github, stackoverflow, social websites, company directories, personal blogs, etc.
-- avatars: List&lt;Guarded&lt;Pii&lt;String&gt;&gt;&gt;, URL; links to things like gravatar.  Terms of Service require no NSFW avatars.
-- favouriteGroups: List&lt;Guarded&lt;GroupId&gt;&gt;, groups the user likes.  If public, can advertise affiliation with a high-reputation group.  If private, just helps auto-populate options like managedBy when creating libraries.  (Visible, favourite groups that the person is not a member of should be distinguished using neutral terminology: "Likes" vs "Affiliations")
+- id: `Int64`; auto-assigned.  Not changeable via delta.
+- name: `Guarded<Pii<String>>`, text/markdown but short markdown.  Terms of use require no relationship to a real person, but if the name uses a trademarked phrase without permission, that's a ToU violation.
+- bio: `Pii<Guarded<Pii<String>>>`, text/markdown; People can describe themselves and their goals here.  Groups can describe their purpose here.
+- urls: `List<Guarded<Pii<String>>>`, URL; to things like Github, stackoverflow, social websites, company directories, personal blogs, etc.
+- avatars: `List<Guarded<Pii<String>>>`, URL; links to things like gravatar.  Terms of Service require no NSFW avatars.
+- favouriteGroups: `List<Guarded<GroupId>>`, groups the user likes.  If public, can advertise affiliation with a high-reputation group.  If private, just helps auto-populate options like managedBy when creating libraries.  (Visible, favourite groups that the person is not a member of should be distinguished using neutral terminology: "Likes" vs "Affiliations")
 
 URLs will be limited to http or https or mailto.  (We may expand to tip jar style custom mobile URIs based on user demand but often there are https equivalents.)  There is no terms of service requirement that a mailto appear or that it match the email address on file.
 
