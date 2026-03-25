@@ -295,10 +295,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#notation-conventions" class="md-nav__link">
+  <a href="#notational-conventions" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Notation conventions
+        Notational conventions
       
     </span>
   </a>
@@ -688,10 +688,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#notation-conventions" class="md-nav__link">
+  <a href="#notational-conventions" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Notation conventions
+        Notational conventions
       
     </span>
   </a>
@@ -1086,13 +1086,10 @@
 <li>Flesh out federated auth: providers, vendors pros/cons, who is a domain expert who can identify common pitfalls in OAuth</li>
 <li>Flesh out publish action requirements, what can be shared across hosting providers, and what's specific.  Do other people have actions for different providers?  Their experiences?</li>
 </ol>
-<h2 id="notation-conventions">Notation conventions<a class="headerlink" href="#notation-conventions" title="Permanent link">&para;</a></h2>
-<ul>
-<li><em>person</em>, <em>people</em>, and <em>Delta type</em> are defined spec terms and are written in italics in this document.</li>
-<li>Type names and method names in this spec are written as inline code, e.g. <code>PersonDelta</code>, <code>Guarded&lt;T&gt;</code>, <code>privilegedGetPii()</code>, <code>Int64</code>, <code>Int32</code>, <code>String</code>, <code>Boolean</code>, <code>Locale</code>, <code>Url</code>.</li>
-<li>URL path templates are written as inline code with literal brackets, e.g. <code>/l/[libraryname]</code>, <code>/p/[personid]</code>.</li>
-<li>Inside code spans, angle brackets use literal <code>&lt;</code> and <code>&gt;</code> (not HTML entities), e.g. <code>Guarded&lt;T&gt;</code>, <code>Pii&lt;T&gt;</code>.</li>
-</ul>
+<h2 id="notational-conventions">Notational conventions<a class="headerlink" href="#notational-conventions" title="Permanent link">&para;</a></h2>
+<p>In italics are terms defined in this spec, e.g. <em>person</em>, <em>people</em>, and <em>Delta type</em>.</p>
+<p>Programming language identifiers including type and method names are in a code font, e.g. <code>Guarded&lt;T&gt;</code>, <code>privilegedGetPii()</code>.</p>
+<p>URL path templates are in a code font too, e.g. <code>/l/[libraryname]</code>, <code>/p/[personid]</code>.  Any URL path part inside square brackets, e.g. <code>[libraryname]</code> is a placeholder for some text that, in this case is a valid library name, possibly <code>%</code> encoded.</p>
 <h2 id="entities">Entities<a class="headerlink" href="#entities" title="Permanent link">&para;</a></h2>
 <p>This section defines terms for the kinds of things Vale deals with.</p>
 <p><em>People</em> can look for, maintain, critique libraries.  They can be members of groups.  Each <em>person</em> has an auto-assigned ID and an email address.  Their profile lists information about them that they may elect to make visible to a particular group.  A <em>person</em> may also have cryptographic public keys associated with their id.</p>
